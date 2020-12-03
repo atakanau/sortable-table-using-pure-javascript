@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sortable Data Table Using Pure Javascript</title>
+    <meta charset="UTF-8">
+
+    <!-- (A) JS + CSS -->
+    <script src="sortable.js"></script>
+    <link rel="stylesheet" href="sortable.css">
+    <link rel="stylesheet" href="bootstrap-grid.min.css">
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap-grid.min"> -->
+  </head>
+  <body>
+    <h1><a href="https://atakanau.blogspot.com/2020/12/sortable-table-using-pure-javascript.html">Sortable Table Using Pure Javascript</a></h1>
+    <fieldset>This Javascript code copied from <a rel="noopener nofollow" href="https://code-boxx.com/sortable-table-vanilla-javascript/">Code Boxx</a>. Code modified for some additional functions. 
+    <br>› Fixed sorting decimal / float and integer numbers. 
+    <br>› Added Bootstrap grid system support.</fieldset>
+    
+    <br>Click on a table header to sort (click again to sort in reverse order).
+    
+    <!-- (B) GENERATE SORTABLE TABLE -->
+    <!-- (B1) FROM JAVASCRIPT OBJECT TO TABLE -->
+    <h2><a href="https://atakanau.blogspot.com/2020/12/sortable-table-using-pure-javascript.html">Javascript Data Object to Sortable Table</a></h2>
+    <div id="demoA"></div>
+
+    <!-- (B2) ON AN EXISTING TABLE -->
+    <h2><a href="https://atakanau.blogspot.com/2020/12/sortable-table-using-pure-javascript.html">Regular HTML Table to Sortable Table</a></h2>
+    <table id="demoB">
+      <thead>
+        <tr>
+          <th>Browser</th>
+          <th>Version</th>
+          <th>Percentage (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Chrome for Android</td>
+          <td></td>
+          <td>34.59</td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>86.0</td>
+          <td>20.07</td>
+        </tr>
+        <tr>
+          <td>Safari iPhone</td>
+          <td></td>
+          <td>13.58</td>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>87.0</td>
+          <td>4.09</td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td>14.0</td>
+          <td>2.3</td>
+        </tr>
+        <tr>
+          <td>Samsung Internet</td>
+          <td>12.1</td>
+          <td>2.21</td>
+        </tr>
+        <tr>
+          <td>Edge</td>
+          <td>86</td>
+          <td>2.1</td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td>82.0</td>
+          <td>1.9</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- (B3) ON AN EXISTING BOOTSTRAP GRID ROWS -->
+    <h2><a href="https://atakanau.blogspot.com/2020/12/sortable-table-using-pure-javascript.html">Responsive Bootstrap Column Row to Sortable Table</a></h2>
+    <!-- Columns start at 100% + 50% + 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div id="demoC" class="container">
+      <div class="row 1">
+        <div class="col-12 col-md-4 text-center">Country</div>
+        <div class="col-6 col-md-4">City</div>
+        <div class="col-6 col-md-4 text-right">Year</div>
+      </div>
+      <div class="row 2">
+        <div class="col-12 col-md-4 text-center">Turkey</div>
+        <div class="col-6 col-md-4">Istanbul</div>
+        <div class="col-6 col-md-4 text-right">2013</div>
+      </div>
+      <div class="row 3">
+        <div class="col-12 col-md-4 text-center">United States</div>
+        <div class="col-6 col-md-4">New York</div>
+        <div class="col-6 col-md-4 text-right">2011</div>
+      </div>
+      <div class="row 3">
+        <div class="col-12 col-md-4 text-center">Brazil</div>
+        <div class="col-6 col-md-4">Rio de Janeiro</div>
+        <div class="col-6 col-md-4 text-right">2013</div>
+      </div>
+      <div class="row 3">
+        <div class="col-12 col-md-4 text-center">France</div>
+        <div class="col-6 col-md-4">Paris</div>
+        <div class="col-6 col-md-4 text-right">2018</div>
+      </div>
+      <div class="row 3">
+        <div class="col-12 col-md-4 text-center">Hong Kong</div>
+        <div class="col-6 col-md-4">Victoria</div>
+        <div class="col-6 col-md-4 text-right">2014</div>
+      </div>
+    </div>
+
+    <!-- (C) INITIALIZE -->
+    <script>
+    window.addEventListener("load", function(){
+      // (C1) CREATE SORTABLE TABLE WITH GIVEN OBJECT
+      var people = {
+         Rank : [ 1,2,3,4,5,6 ]
+        ,Language : [ "Python","Java","JavaScript","C#","C/C++","PHP" ]
+        ,Trend : [ +1.2,-1.7,+0.6,-0.8,+0.1,-0.3 ]
+      };
+      createTable("demoA", people, "sortable");
+      
+      // (C2) CREATE SORTABLE TABLE ON EXISTING <TABLE>
+      createTable("demoB", null, "sortable");
+      
+      // (C3) CREATE SORTABLE TABLE ON EXISTING BOOTSTRAP GRID ROWS <DIV>
+      createTable("demoC", null, "sortable");
+    });
+    </script>
+  </body>
+</html>
